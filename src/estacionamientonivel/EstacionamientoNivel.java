@@ -10,11 +10,34 @@ package estacionamientonivel;
  */
 public class EstacionamientoNivel {
 
-    /**
-     * @param args the command line arguments
-     */
+     public static void porcentaje(){
+       Bienvenida bv=new Bienvenida();
+       bv.setVisible(true); 
+       Login lg=new Login();
+       try{
+         for(int i=0; i<=100; i++){
+           Thread.sleep(40);
+           bv.Porcentaje.setText(Integer.toString(i)+"%");
+           bv.Barra.setValue(i);  
+           
+           if(i%10==0){
+               bv.cargando.setText("Cargando..");
+           }else{
+               bv.cargando.setText("Cargando...");
+           }
+           
+           if(i ==100){
+               bv.setVisible(false);
+               lg.setVisible(true);
+           }
+       }  
+       }catch(Exception e){
+           
+       }
+    }
+     
     public static void main(String[] args) {
-        // TODO code application logic here
+        porcentaje();//Metodo que ejecuta la barra bienvenida
         
     }
     
