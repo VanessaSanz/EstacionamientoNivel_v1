@@ -4,25 +4,50 @@
  */
 package estacionamientonivel;
 
+import java.awt.Color;
+import java.util.LinkedList;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author vanes
  */
 public class csl_lugar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form csl_lugar
-     */
+    private DefaultTableModel modelo;
+    int contador=0;
+  
+    
     public csl_lugar() {
         initComponents();
+        CargarInterfaz();
+        CargarDatos();
+       
     }
     
-    public void lugar(){
-        
-        
-        
-        
+   public void CargarInterfaz(){
+        String datos[][]={};
+        String columna[]={"Lugar","Disponibilidad"};
+        modelo=new DefaultTableModel(datos,columna);
+        tb_lugar.setModel(modelo);
     }
+    
+    public void CargarDatos(){
+        class_auto a;
+        for(int i=0; i<frm_agregarAuto.contenedorDatosLugar.size(); i++){
+            
+            a=(class_auto)frm_agregarAuto.contenedorDatosLugar.get(i);
+            
+            modelo.insertRow(contador,new Object[]{});
+            modelo.setValueAt(a.getLugar(),contador, 0);
+            modelo.setValueAt(a.getDisponibolidad(),contador, 1);
+            
+        
+        }
+    }
+    
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,10 +93,12 @@ public class csl_lugar extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         panel15 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_lugar = new javax.swing.JTable();
+        txt_lugar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lugares");
@@ -108,9 +135,14 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, 60));
+        jPanel2.add(panel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, -1, 60));
 
         panel1.setBackground(new java.awt.Color(167, 249, 132));
+        panel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel1MouseClicked(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -133,7 +165,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 44, -1, 60));
+        jPanel2.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 60));
 
         panel2.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -158,7 +190,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 45, -1, 60));
+        jPanel2.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 60));
 
         panel3.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -183,7 +215,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 60));
+        jPanel2.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, 60));
 
         panel4.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -208,7 +240,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, 60));
+        jPanel2.add(panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, 60));
 
         panel5.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -233,7 +265,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, 60));
+        jPanel2.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 60));
 
         panel6.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -258,7 +290,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 60));
+        jPanel2.add(panel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, 60));
 
         panel7.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -283,7 +315,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, 60));
+        jPanel2.add(panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, 60));
 
         panel8.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -308,7 +340,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, -1, 60));
+        jPanel2.add(panel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, 60));
 
         panel9.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -333,7 +365,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, 60));
+        jPanel2.add(panel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, 60));
 
         panel10.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -358,7 +390,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, 60));
+        jPanel2.add(panel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, 60));
 
         panel11.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -383,7 +415,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, 60));
+        jPanel2.add(panel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, 60));
 
         panel12.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -408,7 +440,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, 60));
+        jPanel2.add(panel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, 60));
 
         panel13.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -433,7 +465,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, 60));
+        jPanel2.add(panel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, 60));
 
         panel14.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -458,7 +490,7 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, 60));
+        jPanel2.add(panel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, 60));
 
         panel15.setBackground(new java.awt.Color(167, 249, 132));
 
@@ -483,19 +515,22 @@ public class csl_lugar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(panel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, 60));
+        jPanel2.add(panel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 490, 390));
+        jLabel23.setText("1");
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 580, 390));
 
         jLabel17.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel17.setText("Pensión");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Poor Richard", 0, 18)); // NOI18N
         jLabel18.setText("Hora/fraccion");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_lugar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -503,27 +538,28 @@ public class csl_lugar extends javax.swing.JFrame {
                 "Lugar", "Disponibilidad"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tb_lugar);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, 180, 470));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 250, -1));
+        jPanel1.add(txt_lugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 80, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 983, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -573,6 +609,7 @@ public class csl_lugar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -583,8 +620,7 @@ public class csl_lugar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JPanel panel1;
+    public javax.swing.JPanel panel1;
     private javax.swing.JPanel panel10;
     private javax.swing.JPanel panel11;
     private javax.swing.JPanel panel12;
@@ -600,5 +636,7 @@ public class csl_lugar extends javax.swing.JFrame {
     private javax.swing.JPanel panel7;
     private javax.swing.JPanel panel8;
     private javax.swing.JPanel panel9;
+    private javax.swing.JTable tb_lugar;
+    private javax.swing.JTextField txt_lugar;
     // End of variables declaration//GEN-END:variables
 }

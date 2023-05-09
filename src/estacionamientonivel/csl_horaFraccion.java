@@ -10,12 +10,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author vanes
  */
-public class csl_pension extends javax.swing.JFrame {
+public class csl_horaFraccion extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     int contador=0;
     
-    public csl_pension() {
+    public csl_horaFraccion() {
         initComponents();
         CargarInterfaz();
         CargarDatos();
@@ -23,28 +23,21 @@ public class csl_pension extends javax.swing.JFrame {
     
      public void CargarInterfaz(){
         String datos[][]={};
-        String columna[]={"Placa","Propietario","Telefono","Direccion","Tipo","Marca","Modelo","Color","Hora","Fecha","Lugar","Disponibilidad"};
+        String columna[]={"Placa","Hora","Fecha","Lugar","Disponibilidad"};
         modelo=new DefaultTableModel(datos,columna);
-        tb_pension.setModel(modelo);
+        tb_hora.setModel(modelo);
     }
     
     public void CargarDatos(){
         class_auto auto;
-        for(int i=0; i<frm_agregarAuto.contenedorPension.size(); i++){
-            auto=(class_auto)frm_agregarAuto.contenedorPension.get(i);
+        for(int i=0; i<frm_horaFraccion.contenedorHoraAutos.size(); i++){
+            auto=(class_auto)frm_horaFraccion.contenedorHoraAutos.get(i);
             modelo.insertRow(contador,new Object[]{});
             modelo.setValueAt(auto.getPlaca(),contador, 0);
-            modelo.setValueAt(auto.getPropietario(),contador, 1);
-            modelo.setValueAt(auto.getTelefono(),contador, 2);
-            modelo.setValueAt(auto.getDireccion(),contador, 3);
-            modelo.setValueAt(auto.getTipo(),contador, 4);
-            modelo.setValueAt(auto.getMarca(),contador, 5);
-            modelo.setValueAt(auto.getModelo(),contador, 6);
-            modelo.setValueAt(auto.getColor(),contador, 7);
-            modelo.setValueAt(auto.getHora(),contador, 8);
-            modelo.setValueAt(auto.getFecha(),contador, 9);
-            modelo.setValueAt(auto.getLugar(),contador, 10);
-            modelo.setValueAt(auto.getDisponibolidad(),contador, 11);
+            modelo.setValueAt(auto.getHora(),contador, 1);
+            modelo.setValueAt(auto.getFecha(),contador, 2);
+            modelo.setValueAt(auto.getLugar(),contador, 3);
+            modelo.setValueAt(auto.getDisponibolidad(),contador, 4);
             
         }
     }
@@ -60,62 +53,53 @@ public class csl_pension extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tb_pension = new javax.swing.JTable();
+        tb_hora = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Pension");
+        setTitle("Datos de hora");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
-        tb_pension.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel1.setFont(new java.awt.Font("NSimSun", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Datos de hora");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 250, 40));
+
+        tb_hora.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tb_pension);
+        jScrollPane1.setViewportView(tb_hora);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 600, 330));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 730, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Menu abrir=new Menu();
-        abrir.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,28 +118,29 @@ public class csl_pension extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(csl_pension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(csl_horaFraccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(csl_pension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(csl_horaFraccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(csl_pension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(csl_horaFraccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(csl_pension.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(csl_horaFraccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new csl_pension().setVisible(true);
+                new csl_horaFraccion().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tb_pension;
+    private javax.swing.JTable tb_hora;
     // End of variables declaration//GEN-END:variables
 }

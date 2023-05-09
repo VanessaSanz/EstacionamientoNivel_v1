@@ -29,8 +29,8 @@ public class Bienvenida extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Porcentaje = new javax.swing.JLabel();
-        Barra = new javax.swing.JProgressBar();
         cargando = new javax.swing.JLabel();
+        Barra = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -45,13 +45,13 @@ public class Bienvenida extends javax.swing.JFrame {
         Porcentaje.setText("1%");
         jPanel1.add(Porcentaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
 
-        Barra.setBackground(new java.awt.Color(216, 93, 168));
-        Barra.setForeground(new java.awt.Color(203, 93, 216));
-        jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 580, 80));
-
         cargando.setFont(new java.awt.Font("Script MT Bold", 0, 36)); // NOI18N
         cargando.setText("Cargando.");
         jPanel1.add(cargando, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+
+        Barra.setBackground(new java.awt.Color(216, 93, 168));
+        Barra.setForeground(new java.awt.Color(203, 93, 216));
+        jPanel1.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 580, 80));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoProgTeam.png"))); // NOI18N

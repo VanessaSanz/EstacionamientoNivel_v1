@@ -4,6 +4,7 @@
  */
 package estacionamientonivel;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -19,16 +20,25 @@ public class frm_agregarAuto extends javax.swing.JFrame {
 
     public static LinkedList contenedorPension = new LinkedList();
     public static LinkedList contenedorLugares = new LinkedList();
+    public static LinkedList contenedorDatosLugar = new LinkedList();
     public int buscar;
+    
+    private Color panelColor = Color.RED; 
     
     public frm_agregarAuto() {
         initComponents();
         this.setLocationRelativeTo(null);
+        tiempo();
+ 
     }
     
-    public void tiempo(){
+   public void tiempo(){
           Timer timer = new Timer(1000, e -> {
             Date date = new Date();
+
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/mm/yyyy");
+            String formattedDate = dateFormatter.format(date);
+            txt_fecha.setText(formattedDate);
 
             SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm:ss a");
             String formattedTime = timeFormatter.format(date);
@@ -38,6 +48,49 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         });
         timer.start();
      }
+    
+     void lugar(){
+        int lugar=Integer.parseInt(sp_lugar.getValue().toString());
+        
+     
+         if(lugar==1){
+           panel1.setBackground(panelColor);
+          
+       }
+       if(lugar==2){
+            this.panel2.setBackground(Color.red);
+         
+       }
+       if(lugar==3){
+            this.panel3.setBackground(Color.red);
+            contenedorLugares.add(panel3);
+       }
+       if(lugar==4){
+            this.panel4.setBackground(Color.red);
+        
+       }
+       if(lugar==5){
+            this.panel5.setBackground(Color.red);
+        
+       }
+       if(lugar==6){
+            this.panel6.setBackground(Color.red);
+           
+       }
+       if(lugar==7){
+            this.panel7.setBackground(Color.red);
+          
+       }
+       if(lugar==8){
+            this.panel8.setBackground(Color.red);
+            
+       }
+       
+       
+       
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +102,7 @@ public class frm_agregarAuto extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txt_placa = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -69,7 +122,6 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         txt_modelo = new javax.swing.JTextField();
         txt_color = new javax.swing.JTextField();
         txt_hora = new javax.swing.JTextField();
-        jdate_fecha = new com.toedter.calendar.JDateChooser();
         sp_lugar = new javax.swing.JSpinner();
         cb_tipo = new javax.swing.JComboBox<>();
         cb_marca = new javax.swing.JComboBox<>();
@@ -78,6 +130,26 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         btn_guardar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        panel1 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        panel2 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        panel3 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        panel4 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        panel5 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        panel6 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        panel7 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        panel8 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        txt_fecha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agregar auto");
@@ -85,11 +157,22 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Menu");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 80, -1));
+        btn_menu.setText("Menu");
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 80, -1));
 
         jLabel1.setText("Placa");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+
+        txt_placa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_placaKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 190, 40));
 
         jLabel2.setText("Propietario");
@@ -132,15 +215,26 @@ public class frm_agregarAuto extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txt_propietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 212, 190, 30));
+
+        txt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefonoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 262, 190, 30));
         jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 190, 30));
+
+        txt_modelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_modeloKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 180, 30));
         jPanel1.add(txt_color, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 180, 30));
         jPanel1.add(txt_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 180, 30));
-        jPanel1.add(jdate_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 180, 30));
 
         sp_lugar.setModel(new javax.swing.SpinnerNumberModel(0, 0, 8, 1));
-        jPanel1.add(sp_lugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 70, 30));
+        jPanel1.add(sp_lugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 60, 30));
 
         cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sedan", "Pick up", "Moto" }));
         jPanel1.add(cb_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 190, 30));
@@ -149,9 +243,14 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         jPanel1.add(cb_marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 190, 30));
 
         jSeparator1.setForeground(new java.awt.Color(0, 153, 153));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 680, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 1100, 20));
 
         btn_tabla.setText("Mostrar datos");
+        btn_tabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tablaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 575, 360, 30));
 
         btn_guardar.setText("Guardar");
@@ -163,17 +262,249 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         jPanel1.add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 100, 30));
 
         btn_modificar.setText("Modificar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 100, 30));
 
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 530, 100, 30));
+
+        jPanel2.setBackground(new java.awt.Color(132, 167, 249));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel1.setBackground(new java.awt.Color(167, 249, 132));
+        panel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel1MouseClicked(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("1");
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 60));
+
+        panel2.setBackground(new java.awt.Color(167, 249, 132));
+
+        jLabel15.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("2");
+
+        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
+        panel2.setLayout(panel2Layout);
+        panel2Layout.setHorizontalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel2Layout.setVerticalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 60));
+
+        panel3.setBackground(new java.awt.Color(167, 249, 132));
+
+        jLabel16.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("3");
+
+        javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
+        panel3.setLayout(panel3Layout);
+        panel3Layout.setHorizontalGroup(
+            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel3Layout.setVerticalGroup(
+            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, 60));
+
+        panel4.setBackground(new java.awt.Color(167, 249, 132));
+
+        jLabel17.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("4");
+
+        javax.swing.GroupLayout panel4Layout = new javax.swing.GroupLayout(panel4);
+        panel4.setLayout(panel4Layout);
+        panel4Layout.setHorizontalGroup(
+            panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel4Layout.setVerticalGroup(
+            panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel17)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, 60));
+
+        panel5.setBackground(new java.awt.Color(167, 249, 132));
+
+        jLabel18.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("5");
+
+        javax.swing.GroupLayout panel5Layout = new javax.swing.GroupLayout(panel5);
+        panel5.setLayout(panel5Layout);
+        panel5Layout.setHorizontalGroup(
+            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel5Layout.setVerticalGroup(
+            panel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel18)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 60));
+
+        panel6.setBackground(new java.awt.Color(167, 249, 132));
+
+        jLabel19.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("6");
+
+        javax.swing.GroupLayout panel6Layout = new javax.swing.GroupLayout(panel6);
+        panel6.setLayout(panel6Layout);
+        panel6Layout.setHorizontalGroup(
+            panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel6Layout.setVerticalGroup(
+            panel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel19)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, 60));
+
+        panel7.setBackground(new java.awt.Color(167, 249, 132));
+
+        jLabel20.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("7");
+
+        javax.swing.GroupLayout panel7Layout = new javax.swing.GroupLayout(panel7);
+        panel7.setLayout(panel7Layout);
+        panel7Layout.setHorizontalGroup(
+            panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel7Layout.setVerticalGroup(
+            panel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, 60));
+
+        panel8.setBackground(new java.awt.Color(167, 249, 132));
+
+        jLabel21.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("8");
+
+        javax.swing.GroupLayout panel8Layout = new javax.swing.GroupLayout(panel8);
+        panel8.setLayout(panel8Layout);
+        panel8Layout.setHorizontalGroup(
+            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel8Layout.setVerticalGroup(
+            panel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21)
+                .addContainerGap())
+        );
+
+        jPanel2.add(panel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, 60));
+
+        jLabel29.setText("1");
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, 340, 390));
+
+        jButton2.setText("Lugares");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 530, -1, 30));
+        jPanel1.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 180, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -201,19 +532,20 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         int modelo=Integer.parseInt(txt_modelo.getText());
         String color=txt_color.getText();
         String hora=txt_hora.getText();
-        String fecha=((JTextField)jdate_fecha.getDateEditor().getUiComponent()).getText();
+        String fecha=txt_fecha.getText();
         int lugar=Integer.parseInt(sp_lugar.getValue().toString());
        
+      
         
         class_auto auto=new class_auto(placa, tipo, marca, modelo, color, hora, fecha, propietario, telefono, direcc, lugar, "Ocupado");
         contenedorPension.add(auto);
 
         class_auto lugares=new class_auto(lugar, "Ocupado");
-        contenedorLugares.add(lugares);
+        contenedorDatosLugar.add(lugares);
+        
+        lugar();
         
         JOptionPane.showMessageDialog(null, "Auto registrado");
-        
-        
         
         
         txt_placa.setText("");
@@ -222,14 +554,169 @@ public class frm_agregarAuto extends javax.swing.JFrame {
         txt_direccion.setText("");
         txt_modelo.setText("");
         txt_color.setText("");
-        jdate_fecha.setCalendar(null);
         sp_lugar.setValue(1);
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel1MouseClicked
+
+    private void btn_tablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tablaActionPerformed
+        // TODO add your handling code here:
+        csl_pension abrir=new csl_pension();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_btn_tablaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        csl_lugar abrir=new csl_lugar();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
+        // TODO add your handling code here:
+        class_auto rango=new class_auto();
+         JOptionPane.showMessageDialog(null, rango.getRangoLog());
+        /*
+        if(rango.getRangoLog().equals("Root")){
+             
+              
+        }else if(rango.getRangoLog().equals("Usuario")){
+            JOptionPane.showMessageDialog(null, "Hola");
+            
+        }
+        */
+        
+    }//GEN-LAST:event_btn_menuActionPerformed
+
+    private void txt_placaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_placaKeyTyped
+         // Codigo para buscar los datos
+        int press=evt.getKeyChar();
+        if(press==10){
+            String idEncontrado=txt_placa.getText().trim();
+            class_auto auto;
+            for(int i = 0; i < contenedorPension.size(); i++){
+                auto=(class_auto)contenedorPension.get(i);
+                if(idEncontrado.equalsIgnoreCase(auto.getPlaca())){
+                    txt_propietario.setText(auto.getPropietario());
+                    txt_telefono.setText(Integer.toString(auto.getTelefono()));
+                    txt_direccion.setText(auto.getDireccion());
+                    cb_tipo.setSelectedItem(auto.getTipo());
+                    cb_marca.setSelectedItem(auto.getMarca());
+                    txt_modelo.setText(Integer.toString(auto.getModelo()));
+                    txt_color.setText(auto.getColor());
+                    txt_hora.setText(auto.getHora());
+                    txt_fecha.setText(auto.getFecha());
+                    sp_lugar.setValue(auto.getLugar());
+                    
+                    buscar=i;
+                    break;
+                    
+                }//Fin if
+                    
+            }//fin for
+            
+        }//Fin if 
+    }//GEN-LAST:event_txt_placaKeyTyped
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // TODO add your handling code here:
+         //Codigo para modificar datos
+         String placa=txt_placa.getText();
+        String propietario=txt_propietario.getText();
+        int telefono=Integer.parseInt(txt_telefono.getText());
+        String direccion=txt_direccion.getText();
+        String tipo=cb_tipo.getSelectedItem().toString();
+        String marca=cb_marca.getSelectedItem().toString();
+        int modelo=Integer.parseInt(txt_modelo.getText());
+        String color=txt_color.getText();
+        String hora=txt_hora.getText();
+        String fecha=txt_fecha.getText();
+        int lugar=Integer.parseInt(sp_lugar.getValue().toString());
+        
+        class_auto auto=new class_auto(placa, tipo, marca, modelo, color, hora, fecha, propietario, telefono, direccion, lugar, "Ocupado");
+        contenedorPension.set(buscar, auto);
+        
+        
+        txt_placa.setText("");
+        txt_propietario.setText("");
+        txt_telefono.setText("");
+        txt_direccion.setText("");
+        txt_modelo.setText("");
+        txt_color.setText("");
+        
+        Timer timer = new Timer(1000, e -> {
+            Date date = new Date();
+
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/mm/yyyy");
+            String formattedDate = dateFormatter.format(date);
+            txt_fecha.setText(formattedDate);
+
+            SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm:ss a");
+            String formattedTime = timeFormatter.format(date);
+            txt_hora.setText(formattedTime);  
+        });
+        timer.start();
+        
+        sp_lugar.setValue(1);
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+         // Codigo para borrar datos
+        contenedorPension.remove(buscar);
+        txt_placa.setText("");
+        txt_propietario.setText("");
+        txt_telefono.setText("");
+        txt_direccion.setText("");
+        txt_modelo.setText("");
+        txt_color.setText("");
+        
+        Timer timer = new Timer(1000, e -> {
+            Date date = new Date();
+
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/mm/yyyy");
+            String formattedDate = dateFormatter.format(date);
+            txt_fecha.setText(formattedDate);
+
+            SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm:ss a");
+            String formattedTime = timeFormatter.format(date);
+            txt_hora.setText(formattedTime);  
+        });
+        timer.start();
+        
+        sp_lugar.setValue(1);
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void txt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyTyped
+       //Codigo para validar solo numeros
+        char validar=evt.getKeyChar();
+        
+        if(Character.isLetter((validar))){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(rootPane, "Ingrese solo numeros");
+        }
+    }//GEN-LAST:event_txt_telefonoKeyTyped
+
+    private void txt_modeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_modeloKeyTyped
+        //Codigo para validar solo numeros
+        char validar=evt.getKeyChar();
+        
+        if(Character.isLetter((validar))){
+            getToolkit().beep();
+            evt.consume();
+            
+            JOptionPane.showMessageDialog(rootPane, "Ingrese solo numeros");
+        }
+    }//GEN-LAST:event_txt_modeloKeyTyped
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+          
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -264,16 +751,26 @@ public class frm_agregarAuto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_menu;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_tabla;
     private javax.swing.JComboBox<String> cb_marca;
     private javax.swing.JComboBox<String> cb_tipo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -282,11 +779,20 @@ public class frm_agregarAuto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private com.toedter.calendar.JDateChooser jdate_fecha;
-    private javax.swing.JSpinner sp_lugar;
+    public javax.swing.JPanel panel1;
+    private javax.swing.JPanel panel2;
+    private javax.swing.JPanel panel3;
+    private javax.swing.JPanel panel4;
+    private javax.swing.JPanel panel5;
+    private javax.swing.JPanel panel6;
+    private javax.swing.JPanel panel7;
+    private javax.swing.JPanel panel8;
+    public javax.swing.JSpinner sp_lugar;
     private javax.swing.JTextField txt_color;
     private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_fecha;
     private javax.swing.JTextField txt_hora;
     private javax.swing.JTextField txt_modelo;
     private javax.swing.JTextField txt_placa;

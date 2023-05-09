@@ -4,12 +4,15 @@
  */
 package estacionamientonivel;
 
+import java.awt.Panel;
+
 /**
  *
  * @author vanes
  */
 public class class_auto {
     
+    private String RangoLog;
     //Atributos auto
     private String placa;
     private String tipo;
@@ -25,8 +28,8 @@ public class class_auto {
     private String direccion;
     
     //Atributos del lugar
-    private int lugar;
     private String disponibolidad;
+    private int lugar;
     
     //Constructores
     //Pension
@@ -54,16 +57,38 @@ public class class_auto {
         this.disponibolidad = disponibolidad;
     }
 
-    public class_auto(int lugar, String disponibolidad) {
+    public class_auto(int lugar, String disponibilidad) {
         this.lugar = lugar;
-        this.disponibolidad = disponibolidad;
+        this.disponibolidad=disponibilidad;
+    }
+
+    public class_auto(String RangoLog) {
+        this.RangoLog = RangoLog;
+    }
+
+    public class_auto() {
     }
     
     
     
-    
-
     //Getters and setters
+
+    public String getRangoLog() {
+        return RangoLog;
+    }
+
+    public void setRangoLog(String RangoLog) {
+        this.RangoLog = RangoLog;
+    }
+    
+    
+    public int getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(int lugar) {
+        this.lugar = lugar;
+    }
 
     public String getPlaca() {
         return placa;
@@ -143,14 +168,6 @@ public class class_auto {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public int getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(int lugar) {
-        this.lugar = lugar;
     }
 
     public String getDisponibolidad() {

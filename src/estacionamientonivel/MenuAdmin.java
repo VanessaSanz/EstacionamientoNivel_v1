@@ -13,36 +13,16 @@ import javax.swing.Timer;
  *
  * @author vanes
  */
-public class Menu extends javax.swing.JFrame {
+public class MenuAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public MenuAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
         tiempo();
-      
     }
-    
-    public void RegresarMenu(){
-       
-    
-      if(lb_TipoUsuario.getText().equals("Root") ){  
-      Menu mr=new Menu();
-      mr.setVisible(true);
-      
-      }else if(lb_TipoUsuario.getText().equals("Administrador")){
-          MenuAdmin ma=new MenuAdmin();
-          ma.setVisible(true);
-          
-      }else if(lb_TipoUsuario.getText().equals("Usuario")){
-          MenuUsr mu=new MenuUsr();
-          mu.setVisible(true);
-      }
-      
-    }
-    
     
     public void tiempo(){
           Timer timer = new Timer(1000, e -> {
@@ -80,12 +60,9 @@ public class Menu extends javax.swing.JFrame {
         lb_TipoUsuario = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btn_agregarAuto = new javax.swing.JButton();
-        btn_datosPension = new javax.swing.JButton();
         btn_hora = new javax.swing.JButton();
-        btn_datosHora = new javax.swing.JButton();
         btn_lugar = new javax.swing.JButton();
         btn_salida = new javax.swing.JButton();
-        btn_agragarAdmin = new javax.swing.JButton();
         btn_Cerrar = new javax.swing.JButton();
         btn_renovacion = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -130,7 +107,7 @@ public class Menu extends javax.swing.JFrame {
 
         lb_TipoUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lb_TipoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_TipoUsuario.setText("Root");
+        lb_TipoUsuario.setText("Administrador");
         jPanel2.add(lb_TipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 180, 90, 40));
 
         jButton1.setText("Manual");
@@ -158,20 +135,7 @@ public class Menu extends javax.swing.JFrame {
                 btn_agregarAutoActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_agregarAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 150, 80));
-
-        btn_datosPension.setBackground(new java.awt.Color(119, 175, 231));
-        btn_datosPension.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/DatosPension.png"))); // NOI18N
-        btn_datosPension.setText("Datos pensión");
-        btn_datosPension.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_datosPension.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btn_datosPension.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        btn_datosPension.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_datosPensionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_datosPension, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 150, -1));
+        jPanel1.add(btn_agregarAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 150, 80));
 
         btn_hora.setBackground(new java.awt.Color(119, 175, 231));
         btn_hora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Hora.png"))); // NOI18N
@@ -184,19 +148,7 @@ public class Menu extends javax.swing.JFrame {
                 btn_horaActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 150, 80));
-
-        btn_datosHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/DatosHora.png"))); // NOI18N
-        btn_datosHora.setText("Datos Hora/fraccion");
-        btn_datosHora.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_datosHora.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btn_datosHora.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        btn_datosHora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_datosHoraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_datosHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 150, 80));
+        jPanel1.add(btn_hora, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 150, 80));
 
         btn_lugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Lugar.jpg"))); // NOI18N
         btn_lugar.setText("Lugares");
@@ -208,7 +160,7 @@ public class Menu extends javax.swing.JFrame {
                 btn_lugarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_lugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 150, 80));
+        jPanel1.add(btn_lugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 150, 80));
 
         btn_salida.setBackground(new java.awt.Color(102, 153, 255));
         btn_salida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salidaV.png"))); // NOI18N
@@ -216,14 +168,7 @@ public class Menu extends javax.swing.JFrame {
         btn_salida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_salida.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btn_salida.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jPanel1.add(btn_salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, 150, 80));
-
-        btn_agragarAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AgregarUser.png"))); // NOI18N
-        btn_agragarAdmin.setText("Agregar admin");
-        btn_agragarAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_agragarAdmin.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btn_agragarAdmin.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jPanel1.add(btn_agragarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 150, 80));
+        jPanel1.add(btn_salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, 150, 80));
 
         btn_Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salir.png"))); // NOI18N
         btn_Cerrar.setText("Cerrar secion");
@@ -235,20 +180,20 @@ public class Menu extends javax.swing.JFrame {
                 btn_CerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 150, 80));
+        jPanel1.add(btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 150, 80));
 
         btn_renovacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/renovacion.png"))); // NOI18N
         btn_renovacion.setText("Renovación");
         btn_renovacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_renovacion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btn_renovacion.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jPanel1.add(btn_renovacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 150, 80));
+        jPanel1.add(btn_renovacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 150, 80));
 
         jLabel6.setFont(new java.awt.Font("Harlow Solid Italic", 0, 48)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Menu");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 180, 100));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 180, 100));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/FondoMenu.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 660));
@@ -295,13 +240,6 @@ public class Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_agregarAutoActionPerformed
 
-    private void btn_datosPensionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_datosPensionActionPerformed
-        // TODO add your handling code here:
-        csl_pension abrir=new csl_pension();
-        abrir.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_datosPensionActionPerformed
-
     private void btn_horaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_horaActionPerformed
         // TODO add your handling code here:
         frm_horaFraccion abrir=new frm_horaFraccion();
@@ -309,16 +247,9 @@ public class Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_horaActionPerformed
 
-    private void btn_datosHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_datosHoraActionPerformed
-        // TODO add your handling code here:
-        csl_horaFraccion abrir=new csl_horaFraccion();
-        abrir.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_datosHoraActionPerformed
-
     private void btn_CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CerrarActionPerformed
         // TODO add your handling code here:
-        Login abrir=new Login();
+        login_admin abrir=new login_admin();
         abrir.setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_CerrarActionPerformed
@@ -340,30 +271,28 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new MenuAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_Cerrar;
-    public javax.swing.JButton btn_agragarAdmin;
     public javax.swing.JButton btn_agregarAuto;
-    public javax.swing.JButton btn_datosHora;
-    public javax.swing.JButton btn_datosPension;
     public javax.swing.JButton btn_hora;
     public javax.swing.JButton btn_lugar;
     public javax.swing.JButton btn_renovacion;
